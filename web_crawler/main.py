@@ -18,11 +18,17 @@ def check_update():
                 if(latest[2] < date):
                         cnt += 1
                         cs_hanyang_db.insert(number,title,date)
+                        add_list.append(zip(number,title,date))
                 else:
                         break
         cs_hanyang_db.commit()
         cs_hanyang_db.close()
-        print(str(cnt)+ " records updated")
+        if(cnt) :
+                for (number,title,date) in add_list:
+                        print("Number: " + number + " Title: " + title + " Date: " + str(date))
+                print(str(cnt)+ " records updated")
+
+        
 
 def main():
         # update()

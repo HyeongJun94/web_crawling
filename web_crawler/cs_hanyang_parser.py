@@ -1,7 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
 
-req = requests.get('http://cs.hanyang.ac.kr/board/info_board.php')
+try:
+    req = requests.get('http://cs.hanyang.ac.kr/board/info_board.php')
+except:
+    print("Except")
 html = req.text
 soup = BeautifulSoup(html,'html.parser')
 
@@ -10,7 +13,7 @@ def sort(board_zip):
     
 
 def crawl():
-
+    # print("hello")
     body = soup.select(
         '#content_box > div > table > tbody > tr'
     )
