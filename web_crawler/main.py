@@ -11,23 +11,24 @@ def check_update():
         
         cs_hanyang_db.use_db()
         latest = cs_hanyang_db.get_latest()
-        
         cnt = 0
         add_list = []
         for(number, title, date) in board_zip:
-                if(latest[2] < date):
+                if(int(latest[2]) < date):
+                        print("Number : " + number + " Title : " + title + " Date : " + str(date))
                         cnt += 1
                         cs_hanyang_db.insert(number,title,date)
-                        add_list.append(zip(number,title,date))
-                else:
-                        break
+                        new_list = [number,title,date]
+                        add_list.append(new_list)
+
         cs_hanyang_db.commit()
         cs_hanyang_db.close()
         if(cnt) :
                 for (number,title,date) in add_list:
                         print("Number: " + number + " Title: " + title + " Date: " + str(date))
                 print(str(cnt)+ " records updated")
-
+        else :
+                print("No new articles")
         
 
 def main():

@@ -1,6 +1,5 @@
 import pymysql
 
-
 db_name = "web_info_db"
 table_name = "cs_hanyang"
 
@@ -30,11 +29,11 @@ def close():
     connection.close()
 
 def get_latest():
-    sql = "SELECT " + "* " + "FROM " + table_name + " ORDER BY _id " + "DESC " + "LIMIT 1;"
+    sql = "SELECT " + "* " + "FROM " + table_name + " ORDER BY date " + "DESC " + "LIMIT 1;"
     # print(sql)
     exec_sql(sql)
     result = cursor.fetchall()
-    ret = ()
+    ret = ("number","title","0")
     
     for r in result:
         # print(r[1].encode('utf-8'))
