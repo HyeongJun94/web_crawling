@@ -11,7 +11,7 @@ soup = None
 def init():
     global req, html, soup;
 
-    req = requests.get('http://cs.hanyang.ac.kr/board/info_board.php', timeout=0.001)
+    req = requests.get('http://cs.hanyang.ac.kr/board/info_board.php', timeout=1)
     # print (type(req))
     html = req.text
     soup = BeautifulSoup(html, 'html.parser')
